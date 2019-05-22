@@ -86,10 +86,10 @@
                 </div>
                 <div class="hpanel">
                     <div class="panel-body">
-                        <form action="#" id="loginForm">
+                        <form th:action="@{/j_spring_security_check}" id="loginForm" method="post">
                             <div class="form-group">
                                 <label class="control-label" for="username">Username</label>
-                                <input type="text" placeholder="example@gmail.com" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
+                                <input type="text" placeholder="username" title="Please enter you username" required="" value="" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="password">Password</label>
@@ -100,7 +100,7 @@
 										<input type="checkbox" class="i-checks"> Remember me </label>
                                 <p class="help-block small">(if this is a private computer)</p>
                             </div>
-                            <button class="btn btn-success btn-block loginbtn">Sign in</button>
+                            <button type="submit" class="btn btn-success btn-block loginbtn">Sign in</button>
                             <a class="btn btn-default btn-block" href="#">Sign up</a>
                         </form>
                     </div>
