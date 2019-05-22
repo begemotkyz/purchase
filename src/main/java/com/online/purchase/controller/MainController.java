@@ -11,4 +11,9 @@ public class MainController  {
     public String getHomePage(){
         return "index";
     }
+
+    @RequestMapping("/login")
+    public String loginPage(){
+        return "login";
+    }
 }
