@@ -77,4 +77,8 @@ public class ProductController {
 
         return "redirect: index";
     }
+    @RequestMapping("product/detail")
+    public String getProductDetailPage(){
+        return "product-detail";
+    }
 }

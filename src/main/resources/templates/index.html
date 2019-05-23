@@ -72,7 +72,7 @@
         <div th:replace="@{/layout/header.html}"></div>
         <div class="product-new-list-area">
             <div class="container-fluid">
-                <a th:href="@{/product/0/save}"><button type="button" class="btn btn-danger btn-lg btn-block">Add your product</button></a>
+                <a th:href="@{/product/0/save}" th:if="${@userService.findUserByUsername(#authentication.name) != null}"><button type="button" class="btn btn-danger btn-lg btn-block">Add your product</button></a>
                 <div class="row">
 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

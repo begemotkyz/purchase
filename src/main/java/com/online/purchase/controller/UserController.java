@@ -80,5 +80,12 @@ public class UserController {
 
         return "redirect:/login";
     }
-
+    @RequestMapping("user/list")
+    public String getUserPage(){
+        return "users";
+    }
+    @RequestMapping("user/profile")
+    public String getUserProfilePage(){
+        return "blog-details";
+    }
 }

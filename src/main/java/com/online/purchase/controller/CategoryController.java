@@ -9,7 +9,7 @@ public class CategoryController {
 
     @RequestMapping("/category/list")
     public String getCategoryList(){
-        return "category-list";
+        return "categories";
     }
 
 }
