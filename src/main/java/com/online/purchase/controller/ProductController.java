@@ -2,8 +2,10 @@ package com.online.purchase.controller;
 
 import com.online.purchase.model.Category;
 import com.online.purchase.model.Product;
+import com.online.purchase.model.User;
 import com.online.purchase.repository.CategoryRepository;
 import com.online.purchase.repository.ProductRepository;
+import com.online.purchase.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,9 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private CategoryRepository categoryRepository;
 
     @RequestMapping("/product/list")
@@ -31,17 +36,23 @@ public class ProductController {
         System.out.println(auth.getName());
         return "product-list";
     }
-    @RequestMapping("/product/{productId}/save")
-    public String productSavePage(ModelMap model, @PathVariable("productId") Long productId){
+    @RequestMapping("/product/{id}/save")
+    public String productSavePage(ModelMap model, @PathVariable("id") long id){
 
         List<Category> categories = categoryRepository.findAll();
         model.addAttribute("categories", categories);
-        if (productId == null || productId == 0){
-            model.addAttribute("product", new Product());
+        if (id == 0){
+
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user=userRepository.findUserByUsername(auth.getName());
+
+            Product product = new Product();
+            product.setOwner(user);
+            model.addAttribute("product", product);
 
         }
         else{
-            model.addAttribute("product", productRepository.getOne(productId));
+            model.addAttribute("product", productRepository.getOne(id));
         }
 
         return "product-edit";
@@ -57,7 +68,6 @@ public class ProductController {
 
             product1.setCategory(product.getCategory());
             product1.setDescription(product.getDescription());
-            product1.setImage(product.getImage());
             product1.setOwner(product.getOwner());
             product1.setPrice(product.getPrice());
             product1.setTitle(product.getTitle());
@@ -65,6 +75,6 @@ public class ProductController {
             productRepository.save(product1);
         }
 
-        return "redirect: /";
+        return "redirect: index";
     }
 }

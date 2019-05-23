@@ -12,15 +12,14 @@ public class Product {
 
     private String title;
 
-    private String image;
+    /*private String image;*/
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "content_id")
-    private Content description;
+
+    private String description;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="category_id")
@@ -44,11 +43,11 @@ public class Product {
         this.title = title;
     }
 
-    public Content getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(Content description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -75,6 +74,7 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+/*
 
     public String getImage() {
         return image;
@@ -83,4 +83,5 @@ public class Product {
     public void setImage(String image) {
         this.image = image;
     }
+*/
 }
