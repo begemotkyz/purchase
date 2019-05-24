@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.jws.soap.SOAPBinding;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.swing.text.html.parser.Entity;
@@ -69,10 +69,33 @@ public class CategoryController {
     }
 
     @PostMapping("/category/save")
-    public String save(ModelMap model, Category category){
+    public String save(Category category){
+
+
         categoryRepository.save(category);
 
         return "redirect:/category/list";
     }
+
+    @RequestMapping("/category/{id}/delete")
+    public String delete(@PathVariable("id") long id){
+
+
+        categoryRepository.deleteById(id);
+
+        return "redirect:/category/list";
+
+    }
+
+    @PostMapping("/category/edit")
+    public String edit(Category category){
+        String baseQuery = "update category set name = "+category.getName()+"where id="+category.getId()+";";
+        Query query = entityManager.createNativeQuery(baseQuery);
+        query.executeUpdate();
+
+        return "redirect:/category/list";
+    }
+
+
 
 }
