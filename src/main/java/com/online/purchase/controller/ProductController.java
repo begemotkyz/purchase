@@ -58,7 +58,7 @@ public class ProductController {
         return "product-edit";
     }
 
-    @PostMapping("product/save")
+    @PostMapping("/product/save")
     public String save(ModelMap model, Product product){
         if(product.getId() == null){
             productRepository.save(product);
@@ -75,10 +75,12 @@ public class ProductController {
             productRepository.save(product1);
         }
 
-        return "redirect: index";
+        return "redirect:/";
     }
-    @RequestMapping("product/detail")
-    public String getProductDetailPage(){
+    @RequestMapping("product/{id}/details")
+    public String getProductDetailPage(ModelMap model, @PathVariable("id") long id){
+        Product product = productRepository.getOne(id);
+        model.addAttribute("product", product);
         return "product-detail";
     }
 }

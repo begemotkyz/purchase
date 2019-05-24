@@ -77,42 +77,45 @@
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                         <div id="myTabContent1" class="tab-content">
                             <div class="product-tab-list tab-pane fade active in" id="single-tab1">
-                                <img src="img/product/bg-1.jpg" alt="" />
+                                <img th:src="@{/img/product/bg-1.jpg}" alt="" />
                             </div>
                             <div class="product-tab-list tab-pane fade" id="single-tab2">
-                                <img src="img/product/bg-2.jpg" alt="" />
+                                <img th:src="@{/img/product/bg-2.jpg}" alt="" />
                             </div>
                             <div class="product-tab-list tab-pane fade" id="single-tab3">
-                                <img src="img/product/bg-3.jpg" alt="" />
+                                <img th:src="@{/img/product/bg-3.jpg}" alt="" />
                             </div>
                             <div class="product-tab-list tab-pane fade" id="single-tab4">
-                                <img src="img/product/bg-1.jpg" alt="" />
+                                <img th:src="@{/img/product/bg-1.jpg}" alt="" />
                             </div>
                             <div class="product-tab-list tab-pane fade" id="single-tab5">
-                                <img src="img/product/bg-2.jpg" alt="" />
+                                <img th:src="@{/img/product/bg-2.jpg}" alt="" />
                             </div>
                         </div>
                         <ul id="single-product-tab">
                             <li class="active">
-                                <a href="#single-tab1"><img src="img/product/1.jpg" alt="" /></a>
+                                <a href="#single-tab1"><img th:src="@{/img/product/1.jpg}" alt="" /></a>
                             </li>
                             <li>
-                                <a href="#single-tab2"><img src="img/product/2.jpg" alt="" /></a>
+                                <a href="#single-tab2"><img th:src="@{/img/product/2.jpg}" alt="" /></a>
                             </li>
                             <li>
-                                <a href="#single-tab3"><img src="img/product/3.jpg" alt="" /></a>
+                                <a href="#single-tab3"><img th:src="@{/img/product/3.jpg}" alt="" /></a>
                             </li>
-                            <li>
-                                <a href="#single-tab4"><img src="img/product/1.jpg" alt="" /></a>
-                            </li>
+
                         </ul>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                         <div class="single-product-details res-pro-tb">
-                            <h1>ITEM TITLE</h1>
+                            <h1 th:text="${product.title}">ITEM TITLE</h1>
                             <span class="single-pro-star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
                             <div class="single-pro-price">
-                                <span class="single-regular">$150.00</span><span class="single-old"><del>$20.00</del></span>
+                                <span class="single-regular" th:text="${product.price+' KGS'}">$150.00</span>
+                            </div>
+                            <div>
+                                <h3>Posted By:</h3>
+                                <span class="single-regular"><a><i class="fa fa-user"></i><h6 th:text="${product.owner.getUsername()}">Alina</h6></a></span>
+                                <span class="single-regular"><div><i class="fa fa-phone"></i><h6 th:text="${product.owner.telephone}">+996703673027</h6></div></span>
                             </div>
 
                 </div>
@@ -133,13 +136,11 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="review-content-section">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                                            <p th:text="${product.description}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                                                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                                                 mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
                                                 beatae vitae dicta sunt explicabo.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labo nisi ut aliquip ex
-                                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ut labore et dolore magna aliqua. Ut enim ad , quis nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+
                                         </div>
                                     </div>
                                 </div>

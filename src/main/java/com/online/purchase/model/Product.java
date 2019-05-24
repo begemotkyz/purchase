@@ -18,7 +18,7 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User owner;
 
-
+    @Column(columnDefinition = "TEXT")
     private String description;
 
     @OneToOne(cascade = CascadeType.ALL)

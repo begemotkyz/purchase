@@ -1,5 +1,6 @@
 package com.online.purchase.controller;
 
+import com.online.purchase.model.Product;
 import com.online.purchase.model.Role;
 import com.online.purchase.model.User;
 import com.online.purchase.model.UserRole;
@@ -13,6 +14,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -28,6 +33,9 @@ public class UserController {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    EntityManager entityManager;
 
 
     @RequestMapping("/signup")
@@ -84,8 +92,14 @@ public class UserController {
     public String getUserPage(){
         return "users";
     }
-    @RequestMapping("user/profile")
-    public String getUserProfilePage(){
+    @RequestMapping("user/{id}/profile")
+    public String getUserProfilePage(ModelMap model, @PathVariable("id") long id){
+        User user = userRepository.getOne(id);
+        String baseQuery = "select * from product where user_id="+id;
+        Query query=entityManager.createNativeQuery(baseQuery, Product.class);
+        List<Product> products = query.getResultList();
+        model.addAttribute("user", user);
+        model.addAttribute("products", products);
         return "blog-details";
     }
 }
