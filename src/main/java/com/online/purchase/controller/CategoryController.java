@@ -87,11 +87,12 @@ public class CategoryController {
 
     }
 
-    @PostMapping("/category/edit")
-    public String edit(Category category){
-        String baseQuery = "update category set name = "+category.getName()+"where id="+category.getId()+";";
-        Query query = entityManager.createNativeQuery(baseQuery);
-        query.executeUpdate();
+    @RequestMapping("/category/{id}/edit")
+    public String edit(String categoryName, @PathVariable("id") long id){
+        Category category = categoryRepository.getOne(id);
+        category.setName(categoryName);
+        categoryRepository.save(category);
+
 
         return "redirect:/category/list";
     }
