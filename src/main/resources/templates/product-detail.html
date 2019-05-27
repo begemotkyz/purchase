@@ -114,7 +114,7 @@
                             </div>
                             <div>
                                 <h3>Posted By:</h3>
-                                <span class="single-regular"><a><i class="fa fa-user"></i><h6 th:text="${product.owner.getUsername()}">Alina</h6></a></span>
+                                <span class="single-regular"><a th:href="@{/user/__${product.owner.id}__/profile}"><i class="fa fa-user"></i><h6 th:text="${product.owner.getUsername()}">Alina</h6></a></span>
                                 <span class="single-regular"><div><i class="fa fa-phone"></i><h6 th:text="${product.owner.telephone}">+996703673027</h6></div></span>
                             </div>
 
