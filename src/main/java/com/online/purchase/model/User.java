@@ -5,7 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema = "d289ov1oppdfu1")
 public class User {
 
     @Id

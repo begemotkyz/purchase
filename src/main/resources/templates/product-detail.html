@@ -66,10 +66,10 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <div th:replace="@{/layout/sidebar}"></div>
+    <div th:replace="@{layout/sidebar}"></div>
     <!-- Start Welcome area -->
     <div class="all-content-wrapper">
-        <div th:replace="@{/layout/header}"></div>
+        <div th:replace="@{layout/header}"></div>
         <!-- Single pro tab start-->
         <div class="single-product-tab-area mg-t-15 mg-b-30">
             <div class="container-fluid">
@@ -114,7 +114,7 @@
                             </div>
                             <div>
                                 <h3>Posted By:</h3>
-                                <span class="single-regular"><a><i class="fa fa-user"></i><h6 th:text="${product.owner.getUsername()}">Alina</h6></a></span>
+                                <span class="single-regular"><a th:href="@{/user/__${product.owner.id}__/profile}"><i class="fa fa-user"></i><h6 th:text="${product.owner.getUsername()}">Alina</h6></a></span>
                                 <span class="single-regular"><div><i class="fa fa-phone"></i><h6 th:text="${product.owner.telephone}">+996703673027</h6></div></span>
                             </div>
 
@@ -150,7 +150,7 @@
                 </div>
             </div>
         </div>
-                <div th:replace="@{/layout/footer.html}">
+                <div th:replace="@{layout/footer.html}">
                 </div>
     </div>
 
