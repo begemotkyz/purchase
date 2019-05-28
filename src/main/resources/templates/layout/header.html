@@ -26,9 +26,7 @@
                                     <ul class="nav navbar-nav mai-top-nav">
                                         <li class="nav-item"><a th:href="@{/}" class="nav-link">Home</a>
                                         </li>
-                                        <li class="nav-item"><a href="#" class="nav-link">About</a>
-                                        </li>
-                                        <li class="nav-item"><a href="#" class="nav-link">Support</a>
+                                        <li class="nav-item"><a th: href="@{/aboutus}" class="nav-link">About</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -76,13 +74,13 @@
                                 <li><a data-toggle="collapse" data-target="#Charts" th:href="@{/}">Home <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
 
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                <li><a data-toggle="collapse" data-target="#demo" th:href="@{/product/list}">Products<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
 
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#others" href="#">Miscellaneous <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                <li><a data-toggle="collapse" data-target="#others" th:href="@{/category/list}">Categories<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
 
                                 </li>
-                                <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
+                                <li><a data-toggle="collapse" data-target="#Miscellaneousmob" th:href="@{/user/list}">Users<span class="admin-project-icon adminpro-icon adminpro-down-arrow"></span></a>
 
                                 </li>
 

@@ -97,6 +97,16 @@ public class CategoryController {
         return "redirect:/category/list";
     }
 
+    @RequestMapping("/product/{categoryId}/list")
+    public String getProducts(ModelMap model,@PathVariable("categoryId") long id){
+        String basequery = "select * from product where category_id = " + id + ";";
+        Query query = entityManager.createNativeQuery(basequery, Product.class);
+        List<Product> products = query.getResultList();
+        model.addAttribute("products",products);
+
+        return "index";
+    }
+
 
 
 }
